@@ -3,13 +3,14 @@ const path = require('path');
 
 // Define paths
 const buildPath = path.resolve(__dirname, 'build');
-const filesToMove = fs.readdirSync(buildPath);
+const rootPath = __dirname;
 
-// Move files to the root directory
-filesToMove.forEach((file) => {
-    const sourcePath = path.resolve(buildPath, file);
-    const destinationPath = path.resolve(__dirname, file);
+// Move all files and folders from build to the root directory
+fs.readdirSync(buildPath).forEach((file) => {
+    const filePath = path.resolve(buildPath, file);
+    const destPath = path.resolve(rootPath, file);
 
-    fs.renameSync(sourcePath, destinationPath);
-    console.log(`${file} moved to the root directory.`);
+    fs.renameSync(filePath, destPath);
 });
+
+console.log('All files and folders moved to the root directory.');
