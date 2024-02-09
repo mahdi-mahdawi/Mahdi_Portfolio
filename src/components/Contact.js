@@ -27,7 +27,7 @@ export const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setButtonText("Sending...");
-    let response = await fetch("http://localhost:5000/contact", {
+    let response = await fetch("https://ionfmccms9.execute-api.us-east-1.amazonaws.com/sendEmail", {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
@@ -45,7 +45,7 @@ export const Contact = () => {
   };
 
   return (
-    <section className="contact" id="connect">
+    <section className="sendEmail" id="connect">
       <Container>
         <Row className="align-items-center">
           <Col size={12} md={6}>
